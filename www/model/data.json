@@ -1,0 +1,37 @@
+[
+
+  {
+      "id":"0",
+      "RoomType":"Single room",
+      
+      "Price": "500", 
+      "Picture1": "bed-2579798_1920",
+      "Picture2":"table-3143080_1920",
+      "max":"1"
+
+  },
+
+  {
+      "id":"1",
+      "RoomType":"Double room", 
+      
+      "Price": "700",
+      "Picture1":"hotel-1330847_1920",
+      "Picture2":"within-3113211_1920",
+      "max":"2"
+  },
+
+  {
+      "id":"2",
+      "RoomType":"Family room", 
+      
+      "Price": "900",
+      "Picture1":"room-2269591_1920",
+      "Picture2":"hotel-1714780_1920",
+      "max":"5"
+  }
+
+]
+
+
+

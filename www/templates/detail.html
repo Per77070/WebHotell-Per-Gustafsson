@@ -1,0 +1,85 @@
+
+<ion-view view-title="Booking page">
+    <ion-content>
+        <ion-list class="list">
+            <ion-item class="item-text-wrap" ng-repeat="item in artists | filter : {Picture1:myFilter}">
+                <img class="rooms" ng-src="img/{{item.Picture1}}.jpg" style="width: 100%;">
+                <img class="rooms" ng-src="img/{{item.Picture2}}.jpg" style="width: 100%;">
+                <h2 ng-model="data.room_name" ng_init=data.room_name=item.name>{{item.RoomType}}</h2> <h2 ng-model="data.max">Max {{item.max}} guests</h2>
+                <h3 ng-model="data.price" ng_init="data.price=item.price">{{item.Price}}.00 kr/night</h3>
+                
+        </ion-list>
+
+
+        <h4 class="BookDiv">Book this Room</h4>
+        <form name="form" ng-submit="submit()">
+           
+            <label style="padding:0%" class="item item-input item-floating-label">
+                <ion-item ng-repeat="item in artists | filter: {Picture1:myFilter}">
+                    <span class="input-label">Number of adult guests</span>
+                    <input    type="number" name="adults" required placeholder="Input number of adults" min="1" max="{{item.max}}" ng-model="data.adults">
+                    
+            </label>
+            <label  style="padding:0%" class="item item-input item-floating-label">
+                <ion-item ng-repeat="item in artists | filter: {Picture1:myFilter}">
+                    <span class="input-label">Number of children</span>
+                    <input  type="number" name="children" required placeholder="Input number of children" min="0" max="{{item.max - data.adults}}" ng-model="data.children">
+                    
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Check-in</span>
+                <input type="date" ng-model="data.dates1" name="arrival" min="{{today}}" ng-blur="getbookdate()"
+                required>
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Check-out</span>
+                <input type="date" ng-model="data.dates2" name="departure" min="{{bookdate}}" ng-blur="confirm()" required>
+            </label>
+
+            
+
+
+            <h4 class="BookDiv">Guest Details</h4>
+            <label class="item item-input item-floating-label">
+                    <span class="input-label">Name</span>
+                    <input type="text" name="name" required placeholder="Input your name" ng-model="data.name">
+                </label>
+                <label class="item item-input item-floating-label">
+                        <span class="input-label">Surname</span>
+                        <input type="text" name="surname" required placeholder="Input your surname" ng-model="data.surname">
+                    </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">E-mail</span>
+                    <input type="email" name="email" required placeholder="Input your e-mail" ng-model="data.email">
+                    <div ng-show="form.email.$error.email" class="error">
+                            Insert a valid E-mail adress please! :)
+                            </div>
+                </label>
+                <label class="item item-input item-floating-label">
+                        <span class="input-label">Phone</span>
+                        <input type="text" name="phone" required placeholder="Input your phone number" ng-model="data.phone">
+                    </label>
+                    
+                    
+                    <ion-item ng-repeat="item in artists | filter: {Picture1:myFilter}">
+                    
+                    <label class="item item-input item-floating-label" 
+                    ng-model="data.days" ng-init="data.days=diffD">{{diffD}}</label>
+                    <label class="item item-input item-stacked-label" 
+                    ng-model="data.totPrice" ng-init="data.totPrice=totalPrice">{{(item.Price-0) * (diffDate(data.dates1, data.dates2)-0)}}.00 kr</label> 
+                    
+                
+
+
+
+            <input class="button button-block button-positive" type="submit" name="submit" value="Book" ng-click="showAlert()" >
+            <h3>Data</h3>
+            <pre>
+                {{data | json}}
+            </pre>
+        </form>
+        
+    </ion-content>
+
+
+</ion-view>

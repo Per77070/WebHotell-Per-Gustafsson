@@ -1,0 +1,35 @@
+<ion-view view-title="" hide-nav-bar="true">
+
+  <ion-header-bar class="bar-dark">
+   
+    <h1 class="title">Hotel BnB</h1>
+   
+  </ion-header-bar>
+
+  
+
+ <ion-content>
+
+      <ion-item href="#/tab/list/{{item.Picture1}}" ng-controller="ListController"
+        ng-repeat="item in artists | filter: {Picture1:myFilter}"
+      
+      class="item-thumbnail-left">
+    
+      <img ng-src="img/{{item.Picture1}}.jpg" alt="" class="img-thumbnail img-fluid">
+      <h2>Price: {{item.Price}}:-/night</h2>
+      <h3>This is a {{item.RoomType}}</h3>
+      <p>Maximum number of guests is {{item.max}}</p>
+    </ion-item>
+    
+    
+      
+
+ 
+
+      
+
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>
